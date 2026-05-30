@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const verifyFirebaseToken = require('../middlewares/authMiddleware'); 
 const studentController = require('../controllers/studentController');
 
 // handles student registration
 router.post('/add-student', studentController.createStudent);
 
 // fetches all student records
-router.get('/all-students', studentController.getAllStudents);
+router.get('/all-students', verifyFirebaseToken, studentController.getAllStudents);
 
 // download pdf for students
 router.get('/download-student-pdf', studentController.downloadStudentPDF);
