@@ -24,7 +24,7 @@ app.use("/api", examRoutes);
 app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Novus Horizon Server is Ready');
+    res.send('JIHC School Server is Ready');
 });
 
 const PORT = process.env.PORT || 5000;

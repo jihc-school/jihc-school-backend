@@ -185,14 +185,11 @@ exports.saveBulkResults = async (req, res) => {
     const { examId, allResults, subjectsConfig } = req.body;
 
     const bulkOps = allResults.map((entry) => {
-      // রেজাল্ট ক্যালকুলেট করুন
       const calculated = calculateFinalResult(entry.subjects, subjectsConfig);
 
       return {
         updateOne: {
-          // স্টুডেন্ট এবং এক্সাম আইডি দিয়ে চেক করবে রেকর্ডটি আছে কি না
           filter: { student: entry.studentOid, exam: examId },
-          // রেকর্ড থাকলে আপডেট হবে, না থাকলে নতুন তৈরি হবে
           update: {
             $set: {
               ...calculated,

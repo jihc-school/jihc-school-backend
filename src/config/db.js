@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
     try {
         const conn = await mongoose.connect(process.env.MONGO_URI, {
-            dbName: 'novus-horizon-db' 
+            dbName: 'jihc' 
         });
 
         console.log(`MongoDB Connected: ${conn.connection.host}`);
